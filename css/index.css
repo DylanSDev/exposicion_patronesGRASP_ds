@@ -578,6 +578,7 @@ body {
   color: var(--primary-foreground);
   font-weight: bold;
   font-size: 1.125rem;
+  margin-bottom: 10px;
 }
 
 .logo-text {
@@ -594,6 +595,17 @@ body {
   text-align: center;
   font-size: 0.875rem;
   color: var(--muted-foreground);
+}
+
+@media (max-width: 768px) {
+  .footer-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .logo-text {
+    text-align: center;
+  }
 }
 
 @media (min-width: 768px) {

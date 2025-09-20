@@ -96,11 +96,43 @@
             mensaje a todos los objetos y dejamos que cada uno se comporte de la
             manera que le corresponde.
           </p>
+          <div class="analogy-container solution-analogy">
+            <h3 class="analogy-title white">
+              Analogía: El Guardia y los Empleados
+            </h3>
+            <div class="flow-diagram">
+              <div class="flow-box main-box">
+                <span>Guardia con un único mensaje:</span>
+                <p>"Cada uno vaya a su oficina"</p>
+              </div>
+              <div class="flow-arrow">▼</div>
+              <div class="flow-grid">
+                <div class="flow-box employee-box red">
+                  <strong>Programador</strong><br />Sabe que va al piso 3
+                </div>
+                <div class="flow-box employee-box yellow">
+                  <strong>Diseñador</strong><br />Sabe que va al piso 5
+                </div>
+                <div class="flow-box employee-box blue">
+                  <strong>Contador</strong><br />Sabe que va al piso 7
+                </div>
+                <div class="flow-box employee-box green">
+                  <strong>Abogado</strong><br />Sabe que va al piso 9
+                </div>
+              </div>
+              <p class="solution-text">
+                ¡Contratar a un "Gerente" no requiere cambiar las órdenes del
+                guardia!
+              </p>
+            </div>
+          </div>
           <div class="solution-highlight">
             <p class="solution-main">
-              Con polimorfismo, el guardia solo dice: "Ve a tu oficina".
+              Con polimorfismo, el guardia solo dice: "Anda a tu oficina".
             </p>
-            <p class="solution-sub">Cada persona ya sabe a qué piso debe ir.</p>
+            <p class="solution-sub">
+              Y cada persona ya sabe a qué piso debe ir.
+            </p>
           </div>
         </div>
       </section>
@@ -215,6 +247,51 @@
           </div>
         </div>
       </section>
+
+      <section id="pros-y-contras" class="section">
+        <div class="card">
+          <h2 class="section-title">⚖️ Pros y Contras</h2>
+          <div class="pros-cons-container">
+            <div class="pros-column">
+              <h3 class="subsection-title pros-title">Beneficios</h3>
+              <ul>
+                <li>
+                  <strong>Flexibilidad y extensibilidad:</strong> Permite
+                  agregar nuevos tipos de objetos sin modificar el código que ya
+                  los utiliza.
+                </li>
+                <li>
+                  <strong>Reducción de acoplamiento:</strong> El código cliente
+                  depende solo de la interfaz, no de las implementaciones
+                  concretas, lo que facilita el mantenimiento.
+                </li>
+                <li>
+                  <strong>Código limpio:</strong> Elimina la necesidad de
+                  complejos if/else, haciendo el código más legible y sencillo.
+                </li>
+              </ul>
+            </div>
+
+            <div class="cons-column">
+              <h3 class="subsection-title cons-title">Desventajas</h3>
+              <ul>
+                <li>
+                  <strong>Inversión de diseño:</strong> A veces, se invierte
+                  tiempo en diseñar con polimorfismo para variaciones futuras
+                  que pueden nunca llegar a materializarse. Es clave ser
+                  realista sobre la necesidad de esta flexibilidad.
+                </li>
+                <li>
+                  <strong>Antipatrón:</strong> El principal problema es volver
+                  al uso de sentencias condicionales. La solución es siempre
+                  refactorizar y usar el polimorfismo en su lugar.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section class="end">
         <div class="container">
           <p class="end-title">Principio Clave del Polimorfismo:</p>
