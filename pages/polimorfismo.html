@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Patrones GRASP : Polimorfismo</title>
+    <link
+      rel="icon"
+      href="https://frt.utn.edu.ar/wp-content/uploads/2025/09/cropped-favicom-1-192x192.png"
+      sizes="192x192"
+    />
+    <link rel="stylesheet" href="../css/index.css" />
+    <link rel="stylesheet" href="../css/polimorfismo.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="../index.html" class="nav-logo">Patrones GRASP</a>
+
+        <div class="nav-menu">
+          <a href="#" class="nav-link">Controlador</a>
+          <a href="#" class="nav-link">Polimorfismo</a>
+          <a href="#" class="nav-link">Fabricación Pura</a>
+          <a href="#" class="nav-link">Indirección</a>
+          <a href="#" class="nav-link">Variaciones Protegidas</a>
+        </div>
+
+        <div class="nav-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </nav>
+    <header class="header">
+      <div class="container">
+        <h1 class="header-title">El Patrón de Polimorfismo</h1>
+        <p class="header-subtitle">
+          Una solución GRASP para un código flexible y mantenible.
+        </p>
+      </div>
+    </header>
+
+    <main class="main">
+      <section id="problema" class="section">
+        <div class="card">
+          <h2 class="section-title">😕 El Problema</h2>
+          <p class="section-text">
+            El principal problema que el polimorfismo aborda es la rigidez y la
+            complejidad del código que utiliza muchas sentencias
+            <code class="inline-code">if-then-else</code> o
+            <code class="inline-code">switch-case</code> para manejar diferentes
+            comportamientos basados en el tipo de un objeto. Este enfoque hace
+            que el código sea difícil de mantener y extender.
+          </p>
+
+          <div class="analogy-container">
+            <h3 class="analogy-title">Analogía: El Guardia del Edificio</h3>
+            <div class="flow-diagram">
+              <div class="flow-box main-box">
+                <span>Guardia con lista de instrucciones:</span>
+              </div>
+              <div class="flow-arrow">▼</div>
+              <div class="flow-grid">
+                <div class="flow-box condition-box red">
+                  <strong>SI</strong> es Programador...<br />Enviar al piso 3
+                </div>
+                <div class="flow-box condition-box yellow">
+                  <strong>SI</strong> es Diseñador...<br />Enviar al piso 5
+                </div>
+                <div class="flow-box condition-box blue">
+                  <strong>SI</strong> es Contador...<br />Enviar al piso 7
+                </div>
+              </div>
+              <p class="problem-text">
+                ¡Contratar a un "Abogado" obliga a actualizar la lista de todos
+                los guardias!
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="solucion" class="section">
+        <div class="card solution-card">
+          <h2 class="section-title white">✨ La Solución</h2>
+          <p class="section-text white">
+            El patrón de polimorfismo propone una solución elegante: en lugar de
+            preguntar al objeto qué tipo es, simplemente le enviamos el mismo
+            mensaje a todos los objetos y dejamos que cada uno se comporte de la
+            manera que le corresponde.
+          </p>
+          <div class="solution-highlight">
+            <p class="solution-main">
+              Con polimorfismo, el guardia solo dice: "Ve a tu oficina".
+            </p>
+            <p class="solution-sub">Cada persona ya sabe a qué piso debe ir.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="como-funciona" class="section">
+        <div class="card">
+          <h2 class="section-title">
+            ⚙️ Tipos o Variantes: Polimorfismo de Subtipos
+          </h2>
+          <p class="section-text">
+            El tipo de polimorfismo más relevante para este patrón es el de
+            subtipos. Su idea central es que una subclase puede ser usada en
+            lugar de su superclase o interfaz, sin que el código que la usa
+            tenga que preocuparse por el tipo concreto.
+          </p>
+        </div>
+      </section>
+
+      <section id="ejemplo" class="section">
+        <div class="card">
+          <h2 class="section-title">🛠️ Ejemplos</h2>
+          <h3 class="subsection-title">
+            Ejemplo Cotidiano: Sonidos de Animales
+          </h3>
+          <p class="section-text">
+            Pensemos en distintos animales. Si le decimos a todos "haz tu
+            sonido", cada uno responde diferente. La acción es la misma, pero la
+            respuesta depende del tipo de animal.
+          </p>
+
+          <div class="diagram-container">
+            <h4 class="diagram-title">Estructura de Herencia (Diagrama)</h4>
+            <div class="inheritance-diagram">
+              <div class="flow-box parent-class">
+                <strong>Clase Abstracta: Animal</strong><br />
+                <em>+ HacerSonido()</em>
+              </div>
+              <div class="inheritance-arrows">
+                <div class="flow-arrow left">▼</div>
+                <div class="flow-arrow center">▼</div>
+                <div class="flow-arrow right">▼</div>
+              </div>
+              <div class="flow-grid">
+                <div class="flow-box child-class">
+                  <strong>Clase: Perro</strong><br />
+                  + HacerSonido() → "Guau"
+                </div>
+                <div class="flow-box child-class">
+                  <strong>Clase: Gato</strong><br />
+                  + HacerSonido() → "Miau"
+                </div>
+                <div class="flow-box child-class">
+                  <strong>Clase: Vaca</strong><br />
+                  + HacerSonido() → "Muuu"
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <h3 class="subsection-title">Ejemplo con Código (Java)</h3>
+          <p class="section-text">
+            Definimos una clase <code class="inline-code">Animal</code> con el
+            método <code class="inline-code">hacerSonido()</code>, y luego las
+            clases hijas implementan este método de manera distinta.
+          </p>
+
+          <div class="code-container">
+            <div class="code-header">
+              <div class="code-language">Java</div>
+              <button class="copy-button" onclick="copyCode()">
+                <span class="copy-icon">📋</span>
+                Copiar
+              </button>
+            </div>
+            <div class="code-block" id="code-content">
+              <pre><code><span class="keyword">abstract class</span> <span class="class-name">Animal</span> {
+    <span class="keyword">abstract</span> <span class="return-type">void</span> <span class="method">hacerSonido</span>();
+}
+
+<span class="keyword">class</span> <span class="class-name">Perro</span> <span class="keyword">extends</span> <span class="class-name">Animal</span> {
+    <span class="return-type">void</span> <span class="method">hacerSonido</span>() { 
+        <span class="class-name">System</span>.<span class="method">out</span>.<span class="method">println</span>(<span class="string">"Guau"</span>); 
+    }
+}
+
+<span class="keyword">class</span> <span class="class-name">Gato</span> <span class="keyword">extends</span> <span class="class-name">Animal</span> {
+    <span class="return-type">void</span> <span class="method">hacerSonido</span>() { 
+        <span class="class-name">System</span>.<span class="method">out</span>.<span class="method">println</span>(<span class="string">"Miau"</span>); 
+    }
+}
+
+<span class="keyword">class</span> <span class="class-name">Vaca</span> <span class="keyword">extends</span> <span class="class-name">Animal</span> {
+    <span class="return-type">void</span> <span class="method">hacerSonido</span>() { 
+        <span class="class-name">System</span>.<span class="method">out</span>.<span class="method">println</span>(<span class="string">"Muuu"</span>); 
+    }
+}
+
+<span class="keyword">public class</span> <span class="class-name">Main</span> {
+    <span class="keyword">public static</span> <span class="return-type">void</span> <span class="method">main</span>(<span class="class-name">String</span>[] <span class="variable">args</span>) {
+        <span class="class-name">Animal</span>[] <span class="variable">animales</span> = { 
+            <span class="keyword">new</span> <span class="class-name">Perro</span>(), 
+            <span class="keyword">new</span> <span class="class-name">Gato</span>(), 
+            <span class="keyword">new</span> <span class="class-name">Vaca</span>() 
+        };
+        
+        <span class="keyword">for</span> (<span class="class-name">Animal</span> <span class="variable">a</span> : <span class="variable">animales</span>) {
+            <span class="variable">a</span>.<span class="method">hacerSonido</span>(); <span class="comment">// Polimorfismo en acción</span>
+        }
+    }
+}</code></pre>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="end">
+        <div class="container">
+          <p class="end-title">Principio Clave del Polimorfismo:</p>
+          <p class="end-subtitle">
+            Asigna la responsabilidad de un comportamiento que varía según el
+            tipo, directamente a los tipos para los que varía.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-left">
+          <div class="footer-logo">
+            <div class="logo-icon">UTN</div>
+            <div class="logo-text">
+              <p class="university-name">Universidad Tecnológica Nacional</p>
+              <p class="faculty-name">Facultad Regional Tucumán</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-right">
+          <p class="group-name">Grupo N°7</p>
+          <p class="subject-name">Cátedra de Diseño de Sistemas</p>
+          <p class="year">2024</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="../js/polimorfismo.js"></script>
+  </body>
+</html>
