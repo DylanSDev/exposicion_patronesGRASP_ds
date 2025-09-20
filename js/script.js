@@ -93,3 +93,73 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+
+document.addEventListener("DOMContentLoaded", () => {
+  tsParticles.load("tsparticles", {
+    fpsLimit: 60,
+    interactivity: {
+      events: {
+        onHover: {
+          enable: true,
+          mode: "repulse", // Las partículas se alejan del cursor
+        },
+        onClick: {
+          enable: true,
+          mode: "push", // Añade más partículas al hacer clic
+        },
+        resize: true,
+      },
+      modes: {
+        repulse: {
+          distance: 100,
+          duration: 0.4,
+        },
+        push: {
+          quantity: 4,
+        },
+      },
+    },
+    particles: {
+      color: {
+        value: "#093968ff", // Color de las partículas
+      },
+      links: {
+        color: "#5963ecff", // Color de las líneas de conexión
+        distance: 150,
+        enable: true,
+        opacity: 0.2,
+        width: 1,
+      },
+      collisions: {
+        enable: true,
+      },
+      move: {
+        direction: "none",
+        enable: true,
+        outModes: {
+          default: "bounce",
+        },
+        random: false,
+        speed: 2, // Velocidad de movimiento
+        straight: false,
+      },
+      number: {
+        density: {
+          enable: true,
+          area: 800,
+        },
+        value: 80, // Cantidad de partículas
+      },
+      opacity: {
+        value: 0.2,
+      },
+      shape: {
+        type: "circle",
+      },
+      size: {
+        value: { min: 1, max: 5 },
+      },
+    },
+    detectRetina: true,
+  });
+});
