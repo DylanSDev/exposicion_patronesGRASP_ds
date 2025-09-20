@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Patrones GRASP - UTN FRT</title>
+    <link rel="stylesheet" href="./css/index.css" />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="#" class="nav-logo">Patrones GRASP</a>
+
+        <div class="nav-menu">
+          <a href="#controlador" class="nav-link">Controlador</a>
+          <a href="#polimorfismo" class="nav-link">Polimorfismo</a>
+          <a href="#fabricacion-pura" class="nav-link">Fabricación Pura</a>
+          <a href="#indireccion" class="nav-link">Indirección</a>
+          <a href="#variaciones-protegidas" class="nav-link"
+            >Variaciones Protegidas</a
+          >
+        </div>
+
+        <div class="nav-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <!-- Hero Section -->
+      <section class="hero">
+        <div class="hero-container">
+          <div class="hero-badge">UTN Facultad Regional Tucumán</div>
+
+          <h1 class="hero-title">
+            Patrones <span class="text-primary">GRASP</span>
+          </h1>
+
+          <p class="hero-description">
+            Somos alumnos de la UTN FRT y preparamos esta exposición en el marco
+            de la materia
+            <span class="font-semibold">Diseño de Sistemas</span>. Exploramos
+            los cinco patrones fundamentales para la asignación de
+            responsabilidades en el diseño de software.
+          </p>
+
+          <div class="hero-buttons">
+            <a href="#patrones" class="btn btn-primary">Explorar Patrones</a>
+            <a href="#" class="btn btn-outline">Descargar Presentación</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Content Structure Section -->
+      <section class="content-structure">
+        <div class="container">
+          <div class="section-header">
+            <h2>Estructura de la Exposición</h2>
+            <p>
+              Para cada patrón GRASP, presentaremos la siguiente información
+              estructurada:
+            </p>
+          </div>
+
+          <div class="structure-grid">
+            <div class="structure-card">
+              <div class="card-icon">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <circle cx="12" cy="12" r="10" />
+                  <circle cx="12" cy="12" r="6" />
+                  <circle cx="12" cy="12" r="2" />
+                </svg>
+              </div>
+              <h3>El Problema</h3>
+              <p>
+                Problemas en el software y analogía con la vida real para
+                facilitar la comprensión.
+              </p>
+            </div>
+
+            <div class="structure-card">
+              <div class="card-icon">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <circle cx="12" cy="12" r="3" />
+                  <path d="M12 1v6m0 6v6" />
+                  <path d="m21 12-6-3-6 3-6-3" />
+                </svg>
+              </div>
+              <h3>La Solución</h3>
+              <p>
+                Definición del patrón y explicación técnica manteniendo la
+                analogía anterior.
+              </p>
+            </div>
+
+            <div class="structure-card">
+              <div class="card-icon">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <path
+                    d="m22 21-3-3m0 0a2 2 0 0 0-3-3 2 2 0 0 0-3 3 2 2 0 0 0 3 3 2 2 0 0 0 3-3Z"
+                  />
+                </svg>
+              </div>
+              <h3>Tipos y Variantes</h3>
+              <p>
+                Diferentes implementaciones, características y cuándo usar cada
+                una.
+              </p>
+            </div>
+
+            <div class="structure-card">
+              <div class="card-icon">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <polyline points="16,18 22,12 16,6" />
+                  <polyline points="8,6 2,12 8,18" />
+                </svg>
+              </div>
+              <h3>Ejemplos Prácticos</h3>
+              <p>
+                Ejemplo cotidiano y ejemplo con código y diagramas UML con
+                descripción visual.
+              </p>
+            </div>
+
+            <div class="structure-card">
+              <div class="card-icon">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"
+                  />
+                </svg>
+              </div>
+              <h3>Pros y Contras</h3>
+              <p>
+                Beneficios, desventajas, antipatrones y remedios para los
+                problemas identificados.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Patterns Grid -->
+      <section id="patrones" class="patterns-section">
+        <div class="container">
+          <div class="section-header">
+            <h2>Los Cinco Patrones GRASP</h2>
+            <p>
+              Haz clic en cualquier patrón para explorar su implementación
+              detallada
+            </p>
+          </div>
+
+          <div class="patterns-grid">
+            <div class="pattern-card" id="controlador">
+              <div class="pattern-header">
+                <div class="pattern-icon">
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <circle cx="12" cy="12" r="10" />
+                    <circle cx="12" cy="12" r="6" />
+                    <circle cx="12" cy="12" r="2" />
+                  </svg>
+                </div>
+                <div>
+                  <h3>Controlador</h3>
+                  <span class="pattern-number">Patrón 1</span>
+                </div>
+              </div>
+              <p>
+                Asigna la responsabilidad de manejar eventos del sistema a una
+                clase controladora.
+              </p>
+              <a href="#" class="btn btn-primary btn-full">Explorar Patrón</a>
+            </div>
+
+            <div class="pattern-card" id="polimorfismo">
+              <div class="pattern-header">
+                <div class="pattern-icon">
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <polyline points="16,18 22,12 16,6" />
+                    <polyline points="8,6 2,12 8,18" />
+                  </svg>
+                </div>
+                <div>
+                  <h3>Polimorfismo</h3>
+                  <span class="pattern-number">Patrón 2</span>
+                </div>
+              </div>
+              <p>
+                Usa operaciones polimórficas para manejar alternativas basadas
+                en tipos.
+              </p>
+              <a href="#" class="btn btn-primary btn-full">Explorar Patrón</a>
+            </div>
+
+            <div class="pattern-card" id="fabricacion-pura">
+              <div class="pattern-header">
+                <div class="pattern-icon">
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <circle cx="12" cy="12" r="3" />
+                    <path d="M12 1v6m0 6v6" />
+                    <path d="m21 12-6-3-6 3-6-3" />
+                  </svg>
+                </div>
+                <div>
+                  <h3>Fabricación Pura</h3>
+                  <span class="pattern-number">Patrón 3</span>
+                </div>
+              </div>
+              <p>
+                Asigna responsabilidades a una clase artificial para mantener
+                alta cohesión.
+              </p>
+              <a href="#" class="btn btn-primary btn-full">Explorar Patrón</a>
+            </div>
+
+            <div class="pattern-card" id="indireccion">
+              <div class="pattern-header">
+                <div class="pattern-icon">
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                    <circle cx="9" cy="7" r="4" />
+                    <path
+                      d="m22 21-3-3m0 0a2 2 0 0 0-3-3 2 2 0 0 0-3 3 2 2 0 0 0 3 3 2 2 0 0 0 3-3Z"
+                    />
+                  </svg>
+                </div>
+                <div>
+                  <h3>Indirección</h3>
+                  <span class="pattern-number">Patrón 4</span>
+                </div>
+              </div>
+              <p>
+                Asigna responsabilidad a un objeto intermedio para mediar entre
+                componentes.
+              </p>
+              <a href="#" class="btn btn-primary btn-full">Explorar Patrón</a>
+            </div>
+
+            <div class="pattern-card" id="variaciones-protegidas">
+              <div class="pattern-header">
+                <div class="pattern-icon">
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"
+                    />
+                  </svg>
+                </div>
+                <div>
+                  <h3>Variaciones Protegidas</h3>
+                  <span class="pattern-number">Patrón 5</span>
+                </div>
+              </div>
+              <p>
+                Protege elementos de las variaciones en otros elementos mediante
+                interfaces estables.
+              </p>
+              <a href="#" class="btn btn-primary btn-full">Explorar Patrón</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA Section -->
+      <section class="cta-section">
+        <div class="container">
+          <div class="cta-content">
+            <h2>¿Listo para profundizar?</h2>
+            <p>
+              Explora cada patrón GRASP y descubre cómo aplicarlos en tus
+              proyectos de software
+            </p>
+            <div class="cta-buttons">
+              <a href="#controlador" class="btn btn-primary"
+                >Comenzar con Controlador</a
+              >
+              <a href="#patrones" class="btn btn-outline"
+                >Ver Todos los Patrones</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-left">
+          <div class="footer-logo">
+            <div class="logo-icon">UTN</div>
+            <div class="logo-text">
+              <p class="university-name">Universidad Tecnológica Nacional</p>
+              <p class="faculty-name">Facultad Regional Tucumán</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-right">
+          <p class="group-name">Grupo N°7</p>
+          <p class="subject-name">Cátedra de Diseño de Sistemas</p>
+          <p class="year">2024</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="./js/script.js"></script>
+  </body>
+</html>
