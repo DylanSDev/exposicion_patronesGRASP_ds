@@ -45,7 +45,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }, observerOptions);
 
   // Observar tarjetas para animación
-  const cards = document.querySelectorAll(".structure-card, .pattern-card");
+  const cards = document.querySelectorAll(
+    ".structure-card, .pattern-card, .intro-card"
+  );
   cards.forEach((card) => {
     card.style.opacity = "0";
     card.style.transform = "translateY(20px)";
