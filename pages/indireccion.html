@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Patrones GRASP : Indirección</title>
+    <link
+      rel="icon"
+      href="https://frt.utn.edu.ar/wp-content/uploads/2025/09/cropped-favicom-1-192x192.png"
+      sizes="192x192"
+    />
+    <link rel="stylesheet" href="../css/index.css" />
+    <link rel="stylesheet" href="../css/indireccion.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="../index.html" class="nav-logo">Patrones GRASP</a>
+        <div class="nav-menu">
+          <a href="#" class="nav-link">Controlador</a>
+          <a href="./polimorfismo.html" class="nav-link">Polimorfismo</a>
+          <a href="#" class="nav-link">Fabricación Pura</a>
+          <a href="#" class="nav-link">Indirección</a>
+          <a href="#" class="nav-link">Variaciones Protegidas</a>
+        </div>
+        <div class="nav-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </nav>
+    <header class="header">
+      <div class="container">
+        <h1 class="header-title">El Patrón de Indirección</h1>
+        <p class="header-subtitle">
+          Una solución GRASP para un software desacoplado y reutilizable.
+        </p>
+      </div>
+    </header>
+
+    <main class="main">
+      <section id="problema" class="section">
+        <div class="card">
+          <h2 class="section-title">😕 El Problema: Alto Acoplamiento</h2>
+          <p class="section-text">
+            Cuando dos o más componentes de un sistema están fuertemente
+            conectados, cualquier cambio en uno de ellos obliga a modificar a
+            los otros. Esto genera un software frágil, difícil de mantener,
+            probar y reutilizar. A este problema se le conoce como
+            <strong>"alto acoplamiento"</strong>.
+          </p>
+
+          <div class="analogy-container">
+            <h3 class="analogy-title">Analogía: Comprar en el Extranjero</h3>
+            <div class="flow-diagram">
+              <div class="flow-box main-box">
+                <span>Comprador en Argentina</span>
+              </div>
+              <div class="flow-arrow">▼</div>
+              <div class="flow-box condition-box red">
+                <strong>SI</strong> quiere comprar en Japón...<br />Debe
+                conseguir Yenes, entender leyes bancarias japonesas, hacer
+                transferencias internacionales y coordinar zonas horarias.
+              </div>
+              <p class="problem-text">
+                ¡El comprador está "fuertemente acoplado" a los procesos y
+                requisitos de la tienda japonesa!
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="solucion" class="section">
+        <div class="card solution-card">
+          <h2 class="section-title white">✨ La Solución: El Intermediario</h2>
+          <p class="section-text white">
+            El patrón Indirección resuelve el problema del alto acoplamiento
+            asignando la responsabilidad de la comunicación entre dos
+            componentes a un <strong>objeto intermediario</strong>. Este
+            intermediario desacopla a los componentes originales, que ya no se
+            conocen directamente entre sí.
+          </p>
+          <div class="analogy-container solution-analogy">
+            <h3 class="analogy-title white">
+              Analogía: Usando una Tarjeta de Crédito
+            </h3>
+            <div class="flow-diagram">
+              <div class="flow-box main-box">
+                <span>Comprador usa Tarjeta de Crédito (Visa)</span>
+              </div>
+              <div class="flow-arrow">▼</div>
+              <div class="flow-grid">
+                <div class="flow-box employee-box green">
+                  <strong>Comprador</strong><br />Paga a Visa en Pesos
+                  Argentinos.
+                </div>
+                <div class="flow-box employee-box blue">
+                  <strong>Visa (Intermediario)</strong><br />Convierte la moneda
+                  y paga a la tienda.
+                </div>
+                <div class="flow-box employee-box yellow">
+                  <strong>Tienda en Japón</strong><br />Recibe el pago de Visa
+                  en Yenes.
+                </div>
+              </div>
+              <p class="solution-text">
+                ¡La tarjeta de crédito (el objeto de indirección) ha desacoplado
+                al comprador del vendedor!
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="como-funciona" class="section">
+        <div class="card">
+          <h2 class="section-title">⚙️ Tipos o Variantes</h2>
+          <p class="section-text">
+            El patrón Indirección es un principio fundamental que se manifiesta
+            a través de otros patrones de diseño más específicos. No tiene
+            "variantes" formales, sino implementaciones concretas. Aquí se
+            detallan dos de las más comunes:
+          </p>
+          <h3 class="subsection-title">Fachada (Facade)</h3>
+          <p class="section-text">
+            El patrón <strong>Fachada</strong> proporciona una interfaz
+            unificada y simplificada a un conjunto de interfaces en un
+            subsistema. Define un punto de entrada de alto nivel que hace que el
+            subsistema sea más fácil de usar.
+          </p>
+          <h3 class="subsection-title">Adaptador (Adapter)</h3>
+          <p class="section-text">
+            El patrón <strong>Adaptador</strong> permite que interfaces
+            incompatibles trabajen juntas. Actúa como un traductor entre dos
+            clases, convirtiendo la interfaz de una clase en otra que el cliente
+            espera.
+          </p>
+        </div>
+      </section>
+
+      <section id="ejemplo" class="section">
+        <div class="card">
+          <h2 class="section-title">🛠️ Ejemplos</h2>
+          <h3 class="subsection-title">
+            Ejemplo Cotidiano: El Enchufe Eléctrico
+          </h3>
+          <p class="section-text">
+            No conectas tu notebook directamente a los cables de alta tensión de
+            la red eléctrica. El enchufe, la toma de corriente y el
+            transformador de tu cargador actúan como capas de indirección. Estos
+            intermediarios adaptan el voltaje, proveen una interfaz estándar y
+            te desacoplan de la complejidad y el peligro de la red eléctrica.
+          </p>
+
+          <h3 class="subsection-title">
+            Ejemplo con Código: Terminal de Venta
+          </h3>
+          <p class="section-text">
+            Un objeto <code class="inline-code">Venta</code> necesita el precio
+            de un producto. En lugar de que
+            <code class="inline-code">Venta</code> consulte directamente la base
+            de datos (alto acoplamiento), le pide la información a un objeto
+            <code class="inline-code">CatalogoProductos</code>. Este catálogo es
+            el intermediario.
+          </p>
+
+          <div class="code-container">
+            <div class="code-header">
+              <div class="code-language">Java</div>
+              <button class="copy-button" onclick="copyCode()">
+                <span class="copy-icon">📋</span>
+                Copiar
+              </button>
+            </div>
+            <div class="code-block" id="code-content">
+              <pre><code><span class="keyword">public class</span> <span class="class-name">Venta</span> {
+    <span class="keyword">private</span> <span class="class-name">CatalogoProductos</span> <span class="variable">catalogo</span>;
+
+    <span class="keyword">public</span> <span class="class-name">Venta</span>(<span class="class-name">CatalogoProductos</span> <span class="variable">catalogo</span>) {
+        <span class="keyword">this</span>.<span class="variable">catalogo</span> = <span class="variable">catalogo</span>;
+    }
+
+    <span class="keyword">public</span> <span class="return-type">void</span> <span class="method">agregarItem</span>(<span class="return-type">int</span> <span class="variable">idProducto</span>, <span class="return-type">int</span> <span class="variable">cantidad</span>) {
+        <span class="comment">// Venta no sabe cómo se obtiene el producto.</span>
+        <span class="comment">// Se lo pide al intermediario (catalogo).</span>
+        <span class="class-name">EspecificacionProducto</span> <span class="variable">producto</span> = <span class="variable">catalogo</span>.<span class="method">getEspecificacion</span>(<span class="variable">idProducto</span>);
+        
+        <span class="comment">// ... usar producto para calcular el total</span>
+    }
+}</code></pre>
+            </div>
+          </div>
+          <div class="diagram-container">
+            <h4 class="diagram-title">Diagrama UML de la Solución</h4>
+            <div class="inheritance-diagram">
+              <div class="flow-box parent-class">
+                <strong>Venta</strong>
+              </div>
+              <div class="inheritance-arrows">
+                <div class="flow-arrow center">▼ se comunica con</div>
+              </div>
+              <div class="flow-box child-class" style="max-width: 400px">
+                <strong>CatalogoProductos (Intermediario)</strong>
+              </div>
+              <div class="inheritance-arrows">
+                <div class="flow-arrow center">▼ obtiene datos de</div>
+              </div>
+              <div class="flow-box child-class" style="max-width: 400px">
+                <strong>EspecificacionProducto (Datos)</strong>
+              </div>
+            </div>
+            <p
+              class="section-text"
+              style="text-align: center; margin-top: 1rem"
+            >
+              La clase <code class="inline-code">Venta</code> solo se comunica
+              con <code class="inline-code">CatalogoProductos</code>, que actúa
+              como intermediario. Así, <code class="inline-code">Venta</code> y
+              <code class="inline-code">EspecificacionProducto</code> están
+              desacoplados.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="pros-y-contras" class="section">
+        <div class="card">
+          <h2 class="section-title">⚖️ Pros y Contras</h2>
+          <div class="pros-cons-container">
+            <div class="pros-column">
+              <h3 class="subsection-title pros-title">Beneficios</h3>
+              <ul>
+                <li>
+                  <strong>Menor Acoplamiento:</strong> Los componentes se
+                  vuelven más independientes. Los cambios en uno no afectan
+                  necesariamente a los demás.
+                </li>
+                <li>
+                  <strong>Mayor Reutilización:</strong> Al estar desacoplados,
+                  los componentes individuales son más fáciles de usar en
+                  diferentes partes del sistema o en otros proyectos.
+                </li>
+                <li>
+                  <strong>Facilita las Pruebas Unitarias:</strong> Permite
+                  aislar componentes para probarlos de forma independiente,
+                  reemplazando al intermediario por un "doble de prueba".
+                </li>
+              </ul>
+            </div>
+
+            <div class="cons-column">
+              <h3 class="subsection-title cons-title">Desventajas</h3>
+              <ul>
+                <li>
+                  <strong>Mayor Complejidad:</strong> Se introduce un objeto
+                  adicional (el intermediario), lo que puede aumentar la
+                  complejidad del diseño si se usa en exceso.
+                </li>
+                <li>
+                  <strong>Posible Impacto en el Rendimiento:</strong> Añadir una
+                  capa de indirección puede introducir una pequeña sobrecarga en
+                  el rendimiento debido a la delegación de llamadas.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="end">
+        <div class="container">
+          <p class="end-title">Principio Clave de la Indirección:</p>
+          <p class="end-subtitle">
+            Asigna la responsabilidad a un objeto intermedio para desacoplar
+            componentes y así reducir el impacto de los cambios.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-left">
+          <div class="footer-logo">
+            <div class="logo-icon">UTN</div>
+            <div class="logo-text">
+              <p class="university-name">Universidad Tecnológica Nacional</p>
+              <p class="faculty-name">Facultad Regional Tucumán</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-right">
+          <p class="group-name">Grupo N°7</p>
+          <p class="subject-name">Cátedra de Diseño de Sistemas</p>
+          <p class="year">2024</p>
+        </div>
+      </div>
+    </footer>
+    <script src="../js/polimorfismo.js"></script>
+  </body>
+</html>
