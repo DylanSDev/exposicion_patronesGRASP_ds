@@ -537,11 +537,12 @@ body {
 
 /* Footer */
 .footer {
-  background-color: var(--card);
+  background-color: var(--section-bg-darker);
   border-top: 1px solid var(--border);
   margin-top: 4rem;
+  position: relative;
+  z-index: 1;
 }
-
 .footer-container {
   max-width: var(--container-max-width);
   margin: 0 auto;
