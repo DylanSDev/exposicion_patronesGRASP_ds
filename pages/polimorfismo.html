@@ -162,34 +162,13 @@
             sonido", cada uno responde diferente. La acción es la misma, pero la
             respuesta depende del tipo de animal.
           </p>
-
-          <div class="diagram-container">
-            <h4 class="diagram-title">Diagrama UML de la solución</h4>
-            <div class="inheritance-diagram">
-              <div class="flow-box parent-class">
-                <strong>Clase Abstracta: Animal</strong><br />
-                <em>+ HacerSonido()</em>
-              </div>
-              <div class="inheritance-arrows">
-                <div class="flow-arrow left">▼</div>
-                <div class="flow-arrow center">▼</div>
-                <div class="flow-arrow right">▼</div>
-              </div>
-              <div class="flow-grid">
-                <div class="flow-box child-class">
-                  <strong>Clase: Perro</strong><br />
-                  + HacerSonido() → "Guau"
-                </div>
-                <div class="flow-box child-class">
-                  <strong>Clase: Gato</strong><br />
-                  + HacerSonido() → "Miau"
-                </div>
-                <div class="flow-box child-class">
-                  <strong>Clase: Vaca</strong><br />
-                  + HacerSonido() → "Muuu"
-                </div>
-              </div>
-            </div>
+          <h4 class="subsection-title">Diagrama UML de la solución</h4>
+          <div class="diagram-container plantuml-diagram">
+            <img
+              src="https://www.plantuml.com/plantuml/png/ZL9BJm8n4BvlqlymYGSrX0GIenuy00QKYp71U1_Q0JTqEwJjHX7vxsvRm5rKj9FqCDzZ7ctFURI-BBJ8t28tIxHOWFChJTLjSta8IOtEzNq5JKjFOybcahyJT4GcibCOiL4CSp9aiI6RebpCBPT6ITPiuQHx6IAfdkZDSvqzO-Dl4syKJnrKDCDI-z4nJkpoRyP-Zl-PFM11C3QUREfxm5QHWnNCDCaNTDz4aM2tnftEnLL_KEUWjVnwW7vjKL4qeHzizylSYhl344cSKeeqaAiw9VRvafkF6xEhPNtgws68u83JwjrH-bGA-YOlKCDQP00jME_G3ToZ93jXaoi-EnVP9cYJv96gkQAYTOHrXvvtjh-pdb7YCTQslPkFTZlLRQP2aMOc68giHqR5ZosoJm00"
+              alt="Diagrama de Clases UML: Animal y sus subclases Perro, Gato, Vaca"
+              style="max-width: 100%; height: auto"
+            />
           </div>
 
           <h3 class="subsection-title">Ejemplo con Código (Java)</h3>
