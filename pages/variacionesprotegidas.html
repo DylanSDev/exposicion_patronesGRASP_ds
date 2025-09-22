@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Patrones GRASP : Variaciones Protegidas</title>
+    <link
+      rel="icon"
+      href="https://frt.utn.edu.ar/wp-content/uploads/2025/09/cropped-favicom-1-192x192.png"
+      sizes="192x192"
+    />
+    <link rel="stylesheet" href="../css/index.css" />
+    <link rel="stylesheet" href="../css/polimorfismo.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="../index.html" class="nav-logo">Patrones GRASP</a>
+        <div class="nav-menu">
+          <a href="./controlador.html" class="nav-link">Controlador</a>
+          <a href="./polimorfismo.html" class="nav-link">Polimorfismo</a>
+          <a href="./fabricacionpura.html" class="nav-link">Fabricación Pura</a>
+          <a href="./indireccion.html" class="nav-link">Indirección</a>
+          <a href="#" class="nav-link">Variaciones Protegidas</a>
+        </div>
+        <div class="nav-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </nav>
+    <header class="header">
+      <div class="container">
+        <h1 class="header-title">El Patrón de Variaciones Protegidas</h1>
+        <p class="header-subtitle">
+          Una solución GRASP para aislar el sistema de cambios e
+          inestabilidades.
+        </p>
+      </div>
+    </header>
+
+    <main class="main">
+      <section id="problema" class="section">
+        <div class="card">
+          <h2 class="section-title">😕 El Problema</h2>
+          <p class="section-text">
+            En un sistema de software siempre existen puntos de inestabilidad:
+            requisitos que cambian, APIs externas, reglas de negocio que se
+            actualizan, etc. Un mal diseño provoca que cada cambio en una parte
+            impacte en múltiples clases, generando
+            <strong>alto acoplamiento</strong> y un elevado costo de
+            mantenimiento. La pregunta clave es: ¿cómo diseñar para que estas
+            variaciones no afecten al resto del sistema?
+          </p>
+
+          <div class="analogy-container">
+            <h3 class="analogy-title">Analogía: Los Enchufes Eléctricos</h3>
+            <div class="flow-diagram">
+              <div class="flow-box main-box">
+                <span>Instalación Eléctrica Doméstica</span>
+              </div>
+              <div class="flow-arrow">▼</div>
+              <div class="flow-grid">
+                <div class="flow-box condition-box red">
+                  <strong>Problema:</strong> Si cada electrodoméstico necesitara
+                  un enchufe diferente.
+                </div>
+                <div class="flow-box condition-box yellow">
+                  <strong>Consecuencia:</strong> Habría que rehacer la
+                  instalación eléctrica cada vez que se compra un nuevo aparato.
+                </div>
+              </div>
+              <p class="problem-text">
+                ¡Un pequeño cambio (nuevo aparato) generaría un gran impacto en
+                toda la casa (sistema)!
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="solucion" class="section">
+        <div class="card solution-card">
+          <h2 class="section-title white">✨ La Solución</h2>
+          <p class="section-text white">
+            El patrón Variaciones Protegidas propone identificar los puntos de
+            posible cambio y encapsularlos detrás de una
+            <strong>interfaz estable</strong>. De esta manera, los clientes del
+            sistema dependen de esta interfaz fija, y no de las implementaciones
+            concretas que pueden variar. Esto protege al sistema del impacto de
+            los cambios y facilita su extensión.
+          </p>
+          <div class="solution-highlight">
+            <p class="solution-main">
+              La instalación eléctrica (la interfaz estable) no cambia. Solo
+              cambian los adaptadores de cada dispositivo (las implementaciones
+              variables).
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="como-funciona" class="section">
+        <div class="card">
+          <h2 class="section-title">⚙️ Tipos o Variantes</h2>
+          <p class="section-text">
+            El patrón no tiene una clasificación formal, pero se manifiesta a
+            través de distintos enfoques de diseño:
+          </p>
+          <ul>
+            <li>
+              <strong>Protección mediante Interfaces (Polimorfismo):</strong> Se
+              define una interfaz y varias implementaciones posibles. Es ideal
+              cuando se esperan múltiples variaciones de comportamiento.
+            </li>
+            <li>
+              <strong>Protección mediante Indirección (Intermediarios):</strong>
+              Se introduce un objeto intermediario (Adaptador, Proxy, Fachada)
+              para desacoplar dependencias externas o APIs inestables.
+            </li>
+            <li>
+              <strong>Protección mediante Encapsulación de Datos:</strong> Se
+              ocultan las estructuras de datos internas, exponiendo solo las
+              operaciones necesarias para proteger a los clientes de cambios en
+              la representación interna.
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="ejemplo" class="section">
+        <div class="card">
+          <h2 class="section-title">🛠️ Ejemplos</h2>
+          <h3 class="subsection-title">Ejemplo Cotidiano: Caja Fuerte</h3>
+          <p class="section-text">
+            El mecanismo interno de una caja fuerte puede variar (electrónico,
+            mecánico, biométrico), pero la <strong>interfaz estable</strong> no
+            cambia: el usuario siempre interactúa con un teclado o un lector
+            para introducir una clave y abrirla.
+          </p>
+
+          <h3 class="subsection-title">
+            Ejemplo en Software: Sistema de Pagos
+          </h3>
+          <p class="section-text">
+            En un e-commerce, se deben soportar distintos métodos de pago
+            (tarjeta, PayPal, cripto). Si el sistema se acopla directamente a
+            cada API de pago, cualquier cambio en una de ellas rompería el
+            código. La solución es crear una interfaz estable
+            <code class="inline-code">IMetodoPago</code> que todas las formas de
+            pago implementarán.
+          </p>
+
+          <div class="code-container">
+            <div class="code-header">
+              <div class="code-language">Java</div>
+              <button class="copy-button" onclick="copyCode()">
+                <span class="copy-icon">📋</span>
+                Copiar
+              </button>
+            </div>
+            <div class="code-block" id="code-content">
+              <pre><code><span class="comment">// 1. Interfaz Estable</span>
+<span class="keyword">public interface</span> <span class="class-name">IMetodoPago</span> {
+    <span class="return-type">boolean</span> <span class="method">procesarPago</span>(<span class="return-type">double</span> <span class="variable">monto</span>);
+}
+
+<span class="comment">// 2. Implementación Concreta: Tarjeta</span>
+<span class="keyword">public class</span> <span class="class-name">PagoTarjeta</span> <span class="keyword">implements</span> <span class="class-name">IMetodoPago</span> {
+    <span class="variable">@Override</span>
+    <span class="keyword">public</span> <span class="return-type">boolean</span> <span class="method">procesarPago</span>(<span class="return-type">double</span> <span class="variable">monto</span>) {
+        <span class="class-name">System</span>.<span class="method">out</span>.<span class="method">println</span>(<span class="string">"Procesando pago con tarjeta por $"</span> + <span class="variable">monto</span>);
+        <span class="keyword">return</span> <span class="literal">true</span>;
+    }
+}
+
+<span class="comment">// 3. Implementación Concreta: PayPal</span>
+<span class="keyword">public class</span> <span class="class-name">PagoPayPal</span> <span class="keyword">implements</span> <span class="class-name">IMetodoPago</span> {
+    <span class="variable">@Override</span>
+    <span class="keyword">public</span> <span class="return-type">boolean</span> <span class="method">procesarPago</span>(<span class="return-type">double</span> <span class="variable">monto</span>) {
+        <span class="class-name">System</span>.<span class="method">out</span>.<span class="method">println</span>(<span class="string">"Procesando pago con PayPal por $"</span> + <span class="variable">monto</span>);
+        <span class="keyword">return</span> <span class="literal">true</span>;
+    }
+}
+
+<span class="comment">// 4. Implementación Concreta: Criptomonedas</span>
+<span class="keyword">public class</span> <span class="class-name">PagoCripto</span> <span class="keyword">implements</span> <span class="class-name">IMetodoPago</span> {
+    <span class="variable">@Override</span>
+    <span class="keyword">public</span> <span class="return-type">boolean</span> <span class="method">procesarPago</span>(<span class="return-type">double</span> <span class="variable">monto</span>) {
+        <span class="class-name">System</span>.<span class="method">out</span>.<span class="method">println</span>(<span class="string">"Procesando pago en criptomonedas por $"</span> + <span class="variable">monto</span>);
+        <span class="keyword">return</span> <span class="literal">true</span>;
+    }
+}</code></pre>
+            </div>
+          </div>
+
+          <h4 class="subsection-title">Diagrama UML de la Solución</h4>
+          <div class="diagram-container plantuml-diagram">
+            <img
+              src="https://www.plantuml.com/plantuml/png/ZLFBJiCm4Bn7oZzOvG08jMeb19oglgLUK2NuWQspAQQEDrgxWXRuAZw17yDEIaaVbCPI3Zkpuvc9qh4Es2qo7KTshamE39cmRgdHlrd9NKXgiBRhF3HTE1nBCWzgXQ8PHt5qBaPa4X8pDCYmjJO5EPynBKmYIHEBizPDEENM8xuwgh9JCgvVyaR5KmKJJ66XtUWOft3vFsEJupInUyXGZ8r3BdttY1EqOYbIZV89xDvIGU2rSBDvVTljLJd0J2yxw6-B2HOYU41sK-PwkJKCfrmkHmbgWTOxHN8gf-sFMqoNUJNrtJ2SKc60_XO6gRu-JN2XGQWGEeMLp-eDR7ojnzAtag6ZX2Om8_4MHq9SJPWaMk0mkhYCeuyWNjWNVHzSEHfWdxASlLwvaSCCU8SQjX-1dz713-jltJ2Qm782-ZHkdrNkw1Wtb94geofTMC6eVJbaGWDxKUhrjgYrQjL2Wb0rHwFntjx6AyOFWskd-s07JLByeN7q3G00"
+              alt="Diagrama UML de la solución de pagos"
+              style="max-width: 100%; height: auto"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section id="pros-y-contras" class="section">
+        <div class="card">
+          <h2 class="section-title">⚖️ Pros y Contras</h2>
+          <div class="pros-cons-container">
+            <div class="pros-column">
+              <h3 class="subsection-title pros-title">Beneficios</h3>
+              <ul>
+                <li>
+                  Se pueden añadir nuevas variaciones (ej. nuevos métodos de
+                  pago) sin modificar el código cliente.
+                </li>
+                <li>
+                  Reduce el acoplamiento entre los componentes del sistema.
+                </li>
+                <li>
+                  Disminuye el impacto y el costo de los cambios a largo plazo.
+                </li>
+                <li>Aumenta la flexibilidad y la reutilización del código.</li>
+              </ul>
+            </div>
+            <div class="cons-column">
+              <h3 class="subsection-title cons-title">Desventajas</h3>
+              <ul>
+                <li>
+                  Puede generar sobre-ingeniería si se aplican capas de
+                  protección innecesarias.
+                </li>
+                <li>
+                  Existe el riesgo de protegerse contra variaciones que nunca
+                  ocurrirán.
+                </li>
+                <li>
+                  Puede añadir una mayor complejidad inicial, especialmente en
+                  sistemas pequeños.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="end">
+        <div class="container">
+          <p class="end-title">Principio Clave de Variaciones Protegidas:</p>
+          <p class="end-subtitle">
+            Identifica los puntos de inestabilidad y encapsúlalos detrás de una
+            interfaz estable para proteger el sistema del impacto de los
+            cambios.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-left">
+          <div class="footer-logo">
+            <div class="logo-icon">UTN</div>
+            <div class="logo-text">
+              <p class="university-name">Universidad Tecnológica Nacional</p>
+              <p class="faculty-name">Facultad Regional Tucumán</p>
+            </div>
+          </div>
+        </div>
+        <div class="footer-right">
+          <p class="group-name">Grupo N°7</p>
+          <p class="subject-name">Cátedra de Diseño de Sistemas</p>
+          <p class="year">2024</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="../js/polimorfismo.js"></script>
+    <script src="../js/script.js"></script>
+  </body>
+</html>
