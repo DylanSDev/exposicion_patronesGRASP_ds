@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Patrones GRASP : Controlador</title>
+    <link
+      rel="icon"
+      href="https://frt.utn.edu.ar/wp-content/uploads/2025/09/cropped-favicom-1-192x192.png"
+      sizes="192x192"
+    />
+    <link rel="stylesheet" href="../css/index.css" />
+    <link rel="stylesheet" href="../css/polimorfismo.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="../index.html" class="nav-logo">Patrones GRASP</a>
+
+        <div class="nav-menu">
+          <a href="./controlador.html" class="nav-link">Controlador</a>
+          <a href="./polimorfismo.html" class="nav-link">Polimorfismo</a>
+          <a href="#" class="nav-link">Fabricación Pura</a>
+          <a href="./indireccion.html" class="nav-link">Indirección</a>
+          <a href="#" class="nav-link">Variaciones Protegidas</a>
+        </div>
+
+        <div class="nav-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </nav>
+    <header class="header">
+      <div class="container">
+        <h1 class="header-title">El Patrón Controlador</h1>
+        <p class="header-subtitle">
+          Una solución GRASP para coordinar eventos del sistema de forma
+          organizada.
+        </p>
+      </div>
+    </header>
+
+    <main class="main">
+      <section id="problema" class="section">
+        <div class="card">
+          <h2 class="section-title">😕 El Problema</h2>
+          <p class="section-text">
+            ¿Quién debe recibir y coordinar los eventos o peticiones del
+            sistema, usualmente desde la interfaz de usuario (UI)? Si dejamos
+            que la propia UI maneje esta lógica, mezclamos responsabilidades,
+            haciendo el sistema más difícil de mantener y probar. Se rompe la
+            separación entre presentación y lógica de negocio.
+          </p>
+
+          <div class="analogy-container">
+            <h3 class="analogy-title">
+              Analogía: El Recepcionista del Hospital
+            </h3>
+            <div class="flow-diagram">
+              <div class="flow-box main-box">
+                <span>Llega un paciente (Evento del sistema)</span>
+              </div>
+              <div class="flow-arrow">▼</div>
+              <div class="flow-box condition-box red">
+                <strong>El Recepcionista</strong> recibe la solicitud, la
+                registra y la deriva al área correcta.
+              </div>
+              <p class="problem-text">
+                ¡El recepcionista no realiza la cirugía! Solo coordina y delega
+                la tarea al especialista adecuado.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="solucion" class="section">
+        <div class="card solution-card">
+          <h2 class="section-title white">✨ La Solución</h2>
+          <p class="section-text white">
+            Según Larman, se debe asignar la responsabilidad de manejar un
+            evento del sistema a una clase <strong>Controlador</strong>. Este
+            actúa como un intermediario entre la UI y la lógica de negocio,
+            recibiendo las peticiones y delegando el trabajo a las clases de
+            dominio correspondientes.
+          </p>
+          <div class="solution-highlight">
+            <p class="solution-main">
+              El controlador centraliza la recepción de mensajes, asegurando que
+              la UI permanezca simple y que la lógica resida en el dominio.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="como-funciona" class="section">
+        <div class="card">
+          <h2 class="section-title">⚙️ Tipos o Variantes</h2>
+          <p class="section-text">
+            Existen dos formas principales de implementar este patrón:
+          </p>
+          <h3 class="subsection-title">Controlador de Casos de Uso</h3>
+          <p class="section-text">
+            Se crea una clase controladora específica para cada caso de uso del
+            sistema. Por ejemplo,
+            <code class="inline-code">RegistrarVentaController</code> o
+            <code class="inline-code">PagarReservaController</code>. Esta opción
+            favorece una alta cohesión y una separación clara entre procesos de
+            negocio.
+          </p>
+          <h3 class="subsection-title">Controlador de Fachada</h3>
+          <p class="section-text">
+            Se utiliza una única clase que representa al sistema en general o a
+            un subsistema completo, como
+            <code class="inline-code">SistemaVentas</code>. Es una solución más
+            sencilla, útil en sistemas pequeños o cuando no se necesita una
+            separación tan granular de los casos de uso.
+          </p>
+        </div>
+      </section>
+
+      <section id="ejemplo" class="section">
+        <div class="card">
+          <h2 class="section-title">🛠️ Ejemplos</h2>
+          <h3 class="subsection-title">
+            Ejemplo Cotidiano: El Mozo en un Restaurante
+          </h3>
+          <p class="section-text">
+            En un restaurante, el mozo actúa como controlador. Recibe los
+            pedidos de los clientes (eventos de la UI) y los comunica a la
+            cocina (clases de dominio). El mozo no cocina ni prepara las
+            bebidas; simplemente coordina la interacción entre el cliente y las
+            áreas que realizan el trabajo.
+          </p>
+
+          <h3 class="subsection-title">Ejemplo con Código (Java)</h3>
+          <p class="section-text">
+            La <code class="inline-code">PantallaVenta</code> (UI) no crea la
+            venta directamente. En su lugar, llama a un método del
+            <code class="inline-code">ControladorVenta</code>, que a su vez se
+            encarga de instanciar y manipular los objetos de dominio como
+            <code class="inline-code">Venta</code>.
+          </p>
+
+          <div class="code-container">
+            <div class="code-header">
+              <div class="code-language">Java</div>
+              <button class="copy-button" onclick="copyCode()">
+                <span class="copy-icon">📋</span>
+                Copiar
+              </button>
+            </div>
+            <div class="code-block" id="code-content">
+              <pre><code><span class="comment">// 1. Interfaz de Usuario (Capa de Presentación)</span>
+<span class="keyword">public class</span> <span class="class-name">PantallaVenta</span> {
+    <span class="keyword">private</span> <span class="class-name">ControladorVenta</span> <span class="variable">controlador</span>;
+
+    <span class="keyword">public</span> <span class="class-name">PantallaVenta</span>() {
+        <span class="variable">controlador</span> = <span class="keyword">new</span> <span class="class-name">ControladorVenta</span>();
+    }
+
+    <span class="comment">// Evento que se dispara al pulsar un botón</span>
+    <span class="keyword">public</span> <span class="return-type">void</span> <span class="method">botonRegistrarVenta</span>() {
+        <span class="variable">controlador</span>.<span class="method">registrarVenta</span>(<span class="string">"Producto A"</span>, 2);
+    }
+}
+
+<span class="comment">// 2. Controlador (Capa de Aplicación)</span>
+<span class="keyword">public class</span> <span class="class-name">ControladorVenta</span> {
+    <span class="keyword">public</span> <span class="return-type">void</span> <span class="method">registrarVenta</span>(<span class="class-name">String</span> <span class="variable">producto</span>, <span class="return-type">int</span> <span class="variable">cantidad</span>) {
+        <span class="comment">// Delega la creación y lógica a la clase de dominio</span>
+        <span class="class-name">Venta</span> <span class="variable">venta</span> = <span class="keyword">new</span> <span class="class-name">Venta</span>();
+        <span class="variable">venta</span>.<span class="method">agregarItem</span>(<span class="variable">producto</span>, <span class="variable">cantidad</span>);
+        <span class="comment">// ... aquí podría continuar con más lógica (totalizar, guardar, etc.)</span>
+    }
+}
+
+<span class="comment">// 3. Clase de Dominio (Capa de Negocio)</span>
+<span class="keyword">public class</span> <span class="class-name">Venta</span> {
+    <span class="keyword">public</span> <span class="return-type">void</span> <span class="method">agregarItem</span>(<span class="class-name">String</span> <span class="variable">producto</span>, <span class="return-type">int</span> <span class="variable">cantidad</span>) {
+        <span class="class-name">System</span>.<span class="method">out</span>.<span class="method">println</span>(<span class="string">"Agregado "</span> + <span class="variable">cantidad</span> + <span class="string">" de "</span> + <span class="variable">producto</span>);
+    }
+}</code></pre>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="pros-y-contras" class="section">
+        <div class="card">
+          <h2 class="section-title">⚖️ Pros y Contras</h2>
+          <div class="pros-cons-container">
+            <div class="pros-column">
+              <h3 class="subsection-title pros-title">Beneficios</h3>
+              <ul>
+                <li>
+                  <strong>Separación de responsabilidades:</strong> Aísla la
+                  lógica de la interfaz de usuario de la lógica de negocio,
+                  respetando el principio de bajo acoplamiento.
+                </li>
+                <li>
+                  <strong>Claridad y organización:</strong> La estructura es
+                  clara: la UI solo muestra datos, el Controlador coordina y las
+                  clases de dominio resuelven.
+                </li>
+                <li>
+                  <strong>Reutilización:</strong> Facilita la reutilización de
+                  la lógica de negocio, ya que no está atada a una interfaz
+                  específica.
+                </li>
+              </ul>
+            </div>
+
+            <div class="cons-column">
+              <h3 class="subsection-title cons-title">
+                Desventajas y Antipatrones
+              </h3>
+              <ul>
+                <li>
+                  <strong>Controladores "gordos":</strong> Existe el riesgo de
+                  que el controlador acumule demasiada lógica que debería estar
+                  en el dominio. Esto se conoce como un "Controlador Inflado"
+                  (Bloated Controller).
+                </li>
+                <li>
+                  <strong>Cuello de botella:</strong> Si no delega
+                  correctamente, puede convertirse en un punto central que
+                  maneja demasiadas tareas, violando la alta cohesión.
+                </li>
+                <li>
+                  <strong>Solución (Remedio):</strong> Para evitar estos
+                  problemas, es fundamental aplicar otros patrones como
+                  <strong>Experto en Información</strong> para delegar la lógica
+                  de negocio a las clases que poseen los datos.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="end">
+        <div class="container">
+          <p class="end-title">Principio Clave del Controlador:</p>
+          <p class="end-subtitle">
+            Un controlador es el primer objeto después de la capa de
+            presentación que recibe y coordina una operación del sistema.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-left">
+          <div class="footer-logo">
+            <div class="logo-icon">UTN</div>
+            <div class="logo-text">
+              <p class="university-name">Universidad Tecnológica Nacional</p>
+              <p class="faculty-name">Facultad Regional Tucumán</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-right">
+          <p class="group-name">Grupo N°7</p>
+          <p class="subject-name">Cátedra de Diseño de Sistemas</p>
+          <p class="year">2024</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="../js/polimorfismo.js"></script>
+    <script src="../js/script.js"></script>
+  </body>
+</html>
