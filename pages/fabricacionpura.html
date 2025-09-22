@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Patrones GRASP : Fabricación Pura</title>
+    <link
+      rel="icon"
+      href="https://frt.utn.edu.ar/wp-content/uploads/2025/09/cropped-favicom-1-192x192.png"
+      sizes="192x192"
+    />
+    <link rel="stylesheet" href="../css/index.css" />
+    <link rel="stylesheet" href="../css/polimorfismo.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="../index.html" class="nav-logo">Patrones GRASP</a>
+        <div class="nav-menu">
+          <a href="./controlador.html" class="nav-link">Controlador</a>
+          <a href="./polimorfismo.html" class="nav-link">Polimorfismo</a>
+          <a href="#" class="nav-link">Fabricación Pura</a>
+          <a href="./indireccion.html" class="nav-link">Indirección</a>
+          <a href="#" class="nav-link">Variaciones Protegidas</a>
+        </div>
+        <div class="nav-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </nav>
+    <header class="header">
+      <div class="container">
+        <h1 class="header-title">El Patrón de Fabricación Pura</h1>
+        <p class="header-subtitle">
+          Una solución GRASP para mantener la cohesión y el bajo acoplamiento en
+          el diseño.
+        </p>
+      </div>
+    </header>
+
+    <main class="main">
+      <section id="problema" class="section">
+        <div class="card">
+          <h2 class="section-title">😕 El Problema</h2>
+          <p class="section-text">
+            El patrón se aplica para resolver a quién asignar una
+            responsabilidad cuando ninguna entidad del dominio es la "Experta"
+            adecuada. Si forzamos la responsabilidad en una clase de dominio,
+            corremos el riesgo de crear clases con
+            <strong>baja cohesión</strong> y <strong>alto acoplamiento</strong>,
+            resultando en un software frágil y difícil de mantener.
+          </p>
+          <div class="analogy-container">
+            <h3 class="analogy-title">Analogía: Los Juegos de Mesa</h3>
+            <div class="flow-diagram">
+              <div class="flow-box main-box">
+                <span>¿Quién crea una nueva partida?</span>
+              </div>
+              <div class="flow-arrow">▼</div>
+              <div class="flow-grid">
+                <div class="flow-box condition-box red">
+                  <strong>El Tablero:</strong> No puede crearse a sí mismo.
+                </div>
+                <div class="flow-box condition-box yellow">
+                  <strong>El Jugador:</strong> Su rol es jugar, no ensamblar el
+                  juego.
+                </div>
+              </div>
+              <p class="problem-text">
+                Asignar la creación a cualquiera de ellos sobrecargaría su
+                propósito original.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="solucion" class="section">
+        <div class="card solution-card">
+          <h2 class="section-title white">✨ La Solución</h2>
+          <p class="section-text white">
+            La solución es crear una clase "artificial" o "inventada" que no
+            representa un concepto del dominio del problema. Esta
+            <strong>Fabricación Pura</strong> existe únicamente para resolver un
+            problema de diseño, encapsulando una responsabilidad que no encaja
+            en otro lugar.
+          </p>
+          <div class="analogy-container solution-analogy">
+            <h3 class="analogy-title white">
+              Analogía: Crear la entidad "CreadorDeJuegos"
+            </h3>
+            <div class="flow-diagram">
+              <div class="flow-box main-box">
+                <span>Entidad Artificial: CreadorDeJuegos</span>
+              </div>
+              <div class="flow-arrow">▼</div>
+              <p
+                class="solution-text"
+                style="background: transparent; border: none"
+              >
+                Esta entidad, que no es parte del juego en sí, tiene la única
+                responsabilidad de saber cómo configurar y crear diferentes
+                partidas, dejando que el Tablero y los Jugadores se enfoquen en
+                sus roles.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="como-funciona" class="section">
+        <div class="card">
+          <h2 class="section-title">⚙️ Tipos o Variantes</h2>
+          <p class="section-text">
+            Fabricación Pura no tiene variantes formales, ya que es un principio
+            de diseño. Sin embargo, este concepto es la base de muchos patrones
+            de diseño del catálogo de la "Gang of Four" (GoF), que utilizan
+            clases artificiales para lograr un mejor diseño.
+          </p>
+          <ul>
+            <li>
+              <strong>Patrones de Creación:</strong> Como
+              <code class="inline-code">Factory Method</code> o
+              <code class="inline-code">Abstract Factory</code>, que usan clases
+              fabricadas para gestionar la creación de objetos.
+            </li>
+            <li>
+              <strong>Patrones de Comportamiento:</strong> Como
+              <code class="inline-code">Strategy</code>, que usa clases para
+              encapsular algoritmos intercambiables.
+            </li>
+            <li>
+              <strong>Patrones de Estructura:</strong> Como
+              <code class="inline-code">Adapter</code> o
+              <code class="inline-code">Decorator</code>, que usan clases
+              artificiales para adaptar interfaces o añadir funcionalidades.
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="ejemplo" class="section">
+        <div class="card">
+          <h2 class="section-title">🛠️ Ejemplos</h2>
+          <h3 class="subsection-title">
+            Ejemplo Cotidiano: Persistencia de Datos
+          </h3>
+          <p class="section-text">
+            Una clase de dominio como
+            <code class="inline-code">Producto</code> no debería ser responsable
+            de guardarse a sí misma en una base de datos. Hacerlo mezclaría la
+            lógica de negocio con la de infraestructura. La solución es crear
+            una <strong>Fabricación Pura</strong>: la clase
+            <code class="inline-code">ProductoRepository</code>, cuya única
+            responsabilidad es gestionar la persistencia de los objetos
+            <code class="inline-code">Producto</code>.
+          </p>
+          <div class="code-container">
+            <div class="code-header">
+              <div class="code-language">Java</div>
+              <button class="copy-button" onclick="copyCode()">
+                <span class="copy-icon">📋</span>
+                Copiar
+              </button>
+            </div>
+            <div class="code-block" id="code-content">
+              <pre><code><span class="comment">// 1. Clase de dominio, enfocada en la lógica de negocio</span>
+<span class="keyword">public class</span> <span class="class-name">Producto</span> {
+    <span class="keyword">private</span> <span class="class-name">String</span> <span class="variable">nombre</span>;
+    <span class="keyword">private</span> <span class="return-type">double</span> <span class="variable">precio</span>;
+
+    <span class="keyword">public</span> <span class="class-name">Producto</span>(<span class="class-name">String</span> <span class="variable">nombre</span>, <span class="return-type">double</span> <span class="variable">precio</span>) {
+        <span class="keyword">this</span>.<span class="variable">nombre</span> = <span class="variable">nombre</span>;
+        <span class="keyword">this</span>.<span class="variable">precio</span> = <span class="variable">precio</span>;
+    }
+
+    <span class="comment">// Getters y setters...</span>
+    <span class="keyword">public</span> <span class="class-name">String</span> <span class="method">getNombre</span>() { <span class="keyword">return</span> <span class="variable">nombre</span>; }
+    <span class="keyword">public</span> <span class="return-type">double</span> <span class="method">getPrecio</span>() { <span class="keyword">return</span> <span class="variable">precio</span>; }
+}
+
+<span class="comment">// 2. Fabricación Pura: Clase para gestionar la persistencia</span>
+<span class="keyword">public class</span> <span class="class-name">ProductoRepository</span> {
+    <span class="comment">// Su única responsabilidad es interactuar con la base de datos.</span>
+    <span class="keyword">public</span> <span class="return-type">void</span> <span class="method">guardar</span>(<span class="class-name">Producto</span> <span class="variable">producto</span>) {
+        <span class="class-name">System</span>.<span class="method">out</span>.<span class="method">println</span>(
+            <span class="string">"Guardando el producto '"</span> + <span class="variable">producto</span>.<span class="method">getNombre</span>() + <span class="string">"' en la base de datos."</span>
+        );
+        <span class="comment">// Aquí iría la lógica real de SQL, JPA, etc.</span>
+    }
+}</code></pre>
+            </div>
+          </div>
+          <h3 class="subsection-title">Diagrama de Secuencia</h3>
+          <div class="diagram-container">
+            <pre class="mermaid">
+                  sequenceDiagram
+                      participant Controlador as "Controlador"
+                      participant Repo as "ProductoRepository"
+                      participant Prod as "Producto"
+
+                      Note over Controlador: Inicia el proceso de guardado.
+                      Controlador->>Repo: guardar(Prod)
+                      activate Repo
+
+                      Note over Repo: El repositorio necesita datos del producto.
+                      Repo->>Prod: getNombre()
+                      activate Prod
+
+                      Prod->>Repo: "Nombre del Producto"
+                      deactivate Prod
+
+                      Note right of Repo: Imprime en consola y<br/>ejecuta la lógica de<br/>guardado en la base de datos.
+                      
+                      deactivate Repo
+                </pre>
+          </div>
+        </div>
+      </section>
+      <section id="pros-y-contras" class="section">
+        <div class="card">
+          <h2 class="section-title">⚖️ Pros y Contras</h2>
+          <div class="pros-cons-container">
+            <div class="pros-column">
+              <h3 class="subsection-title pros-title">Beneficios</h3>
+              <ul>
+                <li>
+                  <strong>Alta Cohesión:</strong> Asegura que cada clase tenga
+                  una única y bien definida responsabilidad, haciendo el código
+                  más fácil de entender y mantener.
+                </li>
+                <li>
+                  <strong>Bajo Acoplamiento:</strong> Desacopla los objetos del
+                  dominio de los detalles de implementación. Un cambio en la
+                  base de datos no afectará a la clase `Producto`.
+                </li>
+                <li>
+                  <strong>Reutilización:</strong> Las clases de Fabricación Pura
+                  son altamente reutilizables al encapsular una funcionalidad
+                  genérica.
+                </li>
+              </ul>
+            </div>
+            <div class="cons-column">
+              <h3 class="subsection-title cons-title">Desventajas</h3>
+              <ul>
+                <li>
+                  <strong>Riesgo de Diseño Procedural:</strong> Si se abusa del
+                  patrón, se puede terminar con clases que son solo contenedores
+                  de funciones sin estado, lo que va en contra de la
+                  programación orientada a objetos.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="end">
+        <div class="container">
+          <p class="end-title">Principio Clave de Fabricación Pura:</p>
+          <p class="end-subtitle">
+            Crea clases artificiales para responsabilidades que no encajan en el
+            dominio, con el fin de preservar la cohesión y el bajo acoplamiento.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-left">
+          <div class="footer-logo">
+            <div class="logo-icon">UTN</div>
+            <div class="logo-text">
+              <p class="university-name">Universidad Tecnológica Nacional</p>
+              <p class="faculty-name">Facultad Regional Tucumán</p>
+            </div>
+          </div>
+        </div>
+        <div class="footer-right">
+          <p class="group-name">Grupo N°7</p>
+          <p class="subject-name">Cátedra de Diseño de Sistemas</p>
+          <p class="year">2024</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="../js/polimorfismo.js"></script>
+    <script src="../js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        try {
+          mermaid.initialize({
+            startOnLoad: true,
+            theme: "dark", // Usamos el tema oscuro predefinido, es más confiable
+            sequence: {
+              actorFontFamily: "Inter, sans-serif",
+              noteFontFamily: "Inter, sans-serif",
+              messageFontFamily: "Inter, sans-serif",
+              actorFontWeight: 400,
+              noteFontWeight: 400,
+              messageFontWeight: 400,
+            },
+          });
+        } catch (e) {
+          console.error("Error al inicializar Mermaid:", e);
+        }
+      });
+    </script>
+  </body>
+</html>

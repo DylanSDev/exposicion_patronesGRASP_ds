@@ -610,3 +610,12 @@ button:focus,
   outline: 2px solid var(--primary);
   outline-offset: 2px;
 }
+
+.solution-text {
+  text-align: center;
+}
+
+pre.mermaid {
+  display: flex;
+  justify-content: center;
+}
